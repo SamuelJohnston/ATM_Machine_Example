@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+void showMenu() {
+
+    // This is the ATM main menu
+    cout << "**********MENU**********" << endl;
+    cout << "1. Check Balance" << endl;
+    cout << "2. Deposit" << endl;
+    cout << "3. Withdraw" << endl;
+    cout << "4. Exit" << endl;
+    cout << "************************\n" << endl;
+}
+
+int main()
+{
+    // These are the options the user can access from the main menu
+    int option;
+    double balance = 500;
+    double depositamount;
+    double withdrawamount;
+    do {
+
+    showMenu();
+    cout << "Select an option: ";
+    cin >> option;
+    // This function clears the Command Line each time a option is chosen to prevent clutter
+    system("cls");
+
+    // This switch is the code which governs how the option function
+    switch (option) {
+
+    case 1: cout << "Balance is: $" << balance << "\n" << endl; break;
+
+    case 2: cout << "Deposit amount: ";
+        cin >> depositamount;
+        balance += depositamount;
+        break;
+
+    case 3: cout << "Withdraw amount: \n";
+        cin >> withdrawamount;
+        if (withdrawamount <= balance)
+            balance -= withdrawamount;
+        else
+            cout << "Not enough funds\n" << endl;
+        break;
+    }
+
+    } while (option != 4);
+}
